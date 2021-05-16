@@ -8,10 +8,9 @@
 class Linkedlist{
     private:
         class Node{
-            private:
+            public:
                 Node *next;
                 void *data;
-            public:
                 Node(void *data, Node *next);
         };
 
@@ -26,7 +25,9 @@ class Linkedlist{
         void *remove();
         void *remove(int index);   
         void clear();
-        bool insert(int index, void *value);
+        void insert(int index, void *value);
+        void *get();
+        void *get(int index);
 };
 
 #endif

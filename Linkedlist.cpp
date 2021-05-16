@@ -31,7 +31,9 @@ int Linkedlist::get_size(){
  * @param value the value of the new element
  */
 void Linkedlist::add(void *value){
-
+    Node *newNode = new Node(value, NULL);
+    last->next = newNode;
+    last = newNode;
 }
 
 /**
@@ -40,7 +42,7 @@ void Linkedlist::add(void *value){
  * @return void* the value of the last element
  */
 void *Linkedlist::remove(){
-
+    
 }
 
 /**
@@ -53,13 +55,38 @@ void *Linkedlist::remove(int index){
 
 }
 
+/**
+ * @brief empty this linked list
+ */
+void Linkedlist::clear(){
 
+}
 
+/**
+ * @brief insert the given value at the given index
+ * 
+ * @param index the index for the element to be inserted
+ * @param value the value of the element to be inserted
+ */
+void Linkedlist::insert(int index, void *value){
 
+}
 
+/**
+ * @brief Get the last element of the list
+ * 
+ * @return void* the value of the last element in the list 
+ */
+void *Linkedlist::get(){
 
+}
 
+/**
+ * @brief get the element at the given index
+ * 
+ * @param index the index of the element 
+ * @return void* the value of the element at the given index
+ */
+void *Linkedlist::get(int index){
 
-
-
-
+}
