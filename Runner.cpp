@@ -1,30 +1,31 @@
 #include "stdio.h"
-#include "Linkedlist.h"
+#include "Linkedlist.hpp"
 
 int main(int argc, char const *argv[])
 {
     printf("Testing! \n");
 
-    Linkedlist *list = new Linkedlist();
+    Linkedlist<int> *list = new Linkedlist<int>();
 
-    printf("Size of list: %i\n", list->get_size());
     list->print();
-    int *x = (int *)malloc(sizeof(int));
-    *x = 10;
-    list->add(x);
-    printf("get 0: %i\n", *(int *)list->get(0));
-    list->insert(1, x);
-    int y = 5;
-    list->add(&y);
+    int a = 10;
+    int b = 5;
+    int c = 2;
+
+    list->add(&a);
+    list->add(&b);
+    list->add(&c);
+    list->insert(0, &c);
     list->print();
-    cout << "size: " << list->get_size() << endl;
-    cout << "Remove index 1: " 
-        << *(int *)list->remove(0) << endl;
+
+    cout << "remove last: " << *list->remove() << endl;
+    cout << "remove first: " << *list->remove(0) << endl;
     list->print();
-    list->clear();
-    list->print();
+
+    cout << "get 1 " << *list->get(1) << endl;
+    cout << "get 0 " << *list->get(0) << endl;
+
     delete list;
-    free(x);
 
     return 0;
 }

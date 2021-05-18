@@ -1,9 +1,10 @@
 CC = g++
 CFLAGS = -o runner -g
+FILES = runner.cpp
 
 all:
-	$(CC) $(CFLAGS) runner.cpp Linkedlist.cpp
+	$(CC) $(CFLAGS) $(FILES)
 
 run:
-	@$(CC) $(CFLAGS) runner.cpp Linkedlist.cpp
+	@$(CC) $(CFLAGS) $(FILES)
 	@runner

@@ -1,4 +1,42 @@
-#include "Linkedlist.hpp"
+#ifndef __LINKEDLIST_H_INCLUDED__
+#define __LINKEDLIST_H_INCLUDED__
+
+#include "string.h"
+#include "strings.h"
+#include "array"
+#include "assert.h"
+#include <iostream>
+using namespace std;
+
+template <typename E>
+class Node{
+    public:
+        Node<E> *next;
+        E *data;
+        Node(E *data, Node *next);
+};
+
+template <typename E>
+class Linkedlist{
+    private:
+        int size;
+        Node<E> *head;
+        Node<E> *last;
+        Node<E> *getNodeBefore(int index);
+        void clearHelper(Node<E> *n);
+    public:
+        Linkedlist();
+        ~Linkedlist();
+        int get_size();
+        void add(E *value);
+        E *remove();
+        E *remove(int index);   
+        void clear();
+        void insert(int index, E *value);
+        E *get();
+        E *get(int index);
+        void print();
+};
 
 /**
  * @brief Construct a new Linkedlist:: Linkedlist object
@@ -15,6 +53,7 @@ Linkedlist<E>::Linkedlist(){
  */
 template <typename E>
 Linkedlist<E>::~Linkedlist(){
+    clear();
     delete head;
 }
 
@@ -89,7 +128,7 @@ E *Linkedlist<E>::remove(){
     assert(size > 0);
 
     Node<E> *nBefore = getNodeBefore(size - 1);
-    void *lastData = last->data;
+    E *lastData = last->data;
     delete last;
     size--;
 
@@ -226,3 +265,5 @@ void Linkedlist<E>::print(){
     }  
     cout << "]" << endl; 
 }
+
+#endif
