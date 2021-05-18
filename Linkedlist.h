@@ -4,19 +4,23 @@
 #include "string.h"
 #include "strings.h"
 #include "array"
+#include "assert.h"
+#include <iostream>
+using namespace std;
+
+class Node{
+    public:
+        Node *next;
+        void *data;
+        Node(void *data, Node *next);
+};
 
 class Linkedlist{
     private:
-        class Node{
-            public:
-                Node *next;
-                void *data;
-                Node(void *data, Node *next);
-        };
-
         int size;
         Node *head;
         Node *last;
+        Node *getNodeBefore(int index);
     public:
         Linkedlist();
         ~Linkedlist();
@@ -28,6 +32,7 @@ class Linkedlist{
         void insert(int index, void *value);
         void *get();
         void *get(int index);
+        void print();
 };
 
 #endif
