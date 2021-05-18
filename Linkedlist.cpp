@@ -103,11 +103,27 @@ void *Linkedlist::remove(){
 /**
  * @brief remove the element at the index
  * 
- * @param index the index of the element to be removed
+ * @param index the index of the element to be remove.
+ * index >= 0 && index < size
  * @return void* the value of the element removed
  */
 void *Linkedlist::remove(int index){
-    return NULL;
+    assert(size > 0);
+    assert(index >= 0 && index < size);
+
+    // remove from the end of the list
+    if(index == size - 1){
+        return remove();
+    }
+
+    Node *nBefore = getNodeBefore(index);
+    Node *currentNode = nBefore->next;
+    nBefore->next = currentNode->next;
+    void *currentData = currentNode->data;
+    delete currentNode;
+    size--;
+
+    return currentData;
 }
 
 void Linkedlist::clearHelper(Node *n){

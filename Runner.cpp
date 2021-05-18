@@ -17,10 +17,10 @@ int main(int argc, char const *argv[])
     int y = 5;
     list->add(&y);
     list->print();
-
-    cout << "Remove last: " 
-        << *(int *)list->remove() << endl;
-
+    cout << "size: " << list->get_size() << endl;
+    cout << "Remove index 1: " 
+        << *(int *)list->remove(0) << endl;
+    list->print();
     list->clear();
     list->print();
     delete list;
