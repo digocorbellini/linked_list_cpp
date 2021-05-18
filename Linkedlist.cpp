@@ -1,16 +1,27 @@
 #include "Linkedlist.h"
 
+/**
+ * @brief Construct a new Linkedlist:: Linkedlist object
+ */
 Linkedlist::Linkedlist(){
     size = 0;
     head = new Node(NULL, NULL);
     last = NULL;
 }
 
+/**
+ * @brief Destroy the Linkedlist:: Linkedlist object
+ */
 Linkedlist::~Linkedlist(){
     delete head;
-    delete last;
 }
 
+/**
+ * @brief Construct a new Node:: Node object
+ * 
+ * @param data the value of this node
+ * @param next a pointer to the next node in the list
+ */
 Node::Node(void *data, Node *next){
     this->data = data;
     this->next = next;
@@ -68,7 +79,25 @@ void Linkedlist::add(void *value){
  * @return void* the value of the last element
  */
 void *Linkedlist::remove(){
-    return NULL;
+    assert(size > 0);
+
+    Node *nBefore = getNodeBefore(size - 1);
+    void *lastData = last->data;
+    delete last;
+    size--;
+
+    // check to see if the list is now empty
+    if(size == 0){
+        // list is empty so last is null
+        last = NULL;
+    }else{
+        // list isn't empty so node before the previous last
+        // is now last
+        last = nBefore;
+        last->next = NULL;
+    }
+
+    return lastData;
 }
 
 /**
@@ -81,11 +110,27 @@ void *Linkedlist::remove(int index){
     return NULL;
 }
 
+void Linkedlist::clearHelper(Node *n){
+    // Base case: node is null (aka we have finished 
+    // traversing the list)
+    if(n == NULL){
+        return;
+    }
+
+    // Recursive case: continue to traverse the list
+    clearHelper(n->next);
+
+    // remove this node
+    delete n;
+}
+
 /**
  * @brief empty this linked list
  */
 void Linkedlist::clear(){
-
+    clearHelper(head->next);
+    size = 0;
+    last = NULL;
 }
 
 /**

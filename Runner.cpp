@@ -17,7 +17,14 @@ int main(int argc, char const *argv[])
     int y = 5;
     list->add(&y);
     list->print();
+
+    cout << "Remove last: " 
+        << *(int *)list->remove() << endl;
+
+    list->clear();
+    list->print();
     delete list;
     free(x);
+
     return 0;
 }

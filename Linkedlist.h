@@ -21,6 +21,7 @@ class Linkedlist{
         Node *head;
         Node *last;
         Node *getNodeBefore(int index);
+        void clearHelper(Node *n);
     public:
         Linkedlist();
         ~Linkedlist();
