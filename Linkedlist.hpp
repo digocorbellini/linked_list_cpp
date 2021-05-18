@@ -1,9 +1,6 @@
 #ifndef __LINKEDLIST_H_INCLUDED__
 #define __LINKEDLIST_H_INCLUDED__
 
-#include "string.h"
-#include "strings.h"
-#include "array"
 #include "assert.h"
 #include <iostream>
 using namespace std;
